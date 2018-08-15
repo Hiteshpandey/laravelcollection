@@ -21,6 +21,7 @@ Route::get('/form', function () {
 
 Route::post('/formsubmit', 'UserController@submit')->name('formsubmit');
 Route::post('/formsubmit1', 'UserController@submits')->name('formsubmit1');
+Route::post('/validatesubmit', 'UserController@vsubmit')->name('validatesubmit');
 /*
 Route::get('/new/{name}', function ($name) {
     return view('newview',['text'=>$name]);

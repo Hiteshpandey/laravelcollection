@@ -17,4 +17,13 @@ class UserController extends Controller{
         // return view('data.showdata',['name'=>$request['name']]);
         return view('data.showdata',['name'=>$request->session()->get('name')]);
     }
+
+    public function vsubmit(Request $request){
+       $request->validate([
+        'name'=>'required|min:4',
+        'password'=> 'required|min:4'  
+        ]);
+
+       // return view('showdata',['name'=>$request['name'],'pwd'=>$request['password']]);
+    }
 }

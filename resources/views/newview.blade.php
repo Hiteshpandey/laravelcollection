@@ -21,6 +21,12 @@
                 margin: 0;
             }
 
+            input{
+                display: block;
+                margin: 0 auto;
+                margin-bottom: 3rem;
+            }
+
             .full-height {
                 height: 100vh;
             }
@@ -77,17 +83,33 @@
                 </div>
             @endif
 
+            {{-- @foreach($errors->all() as $error)
+                <div>{{$error}}<div>
+            @endforeach --}}
+
             <div class="content">
-                <div class="title m-b-md">
-                        <div class="title m-b-md">
-                                Form Submission
-                            </div>
-                    <form action="{{route('formsubmit1')}}" method="post">
+                    <div class="title m-b-md">
+                        Form Submission
+                    </div>
+                    {{-- <form action="{{route('formsubmit1')}}" method="post">
                         {{csrf_field()}}
                         <input type="text" name="name" />
                         <button type="submit" name='button'>submit</button>
+                    </form> --}}
+                    <form action="{{route('validatesubmit')}}" method="post">
+                        {{csrf_field()}}
+                        @if($errors->has('name'))
+                            <div style="color:red">{{$errors->first('name')}}</div>
+                        @endif
+                        <input type="text" name="name" value="" />
+                        
+                        @if($errors->has('password'))
+                            <div style="color:red">{{$errors->first('password')}}</div>
+                        @endif
+                        <input type="password" name="password"  value="" />
+                        
+                        <button type="submit" name='button'>submit</button>
                     </form>
-                </div>
 
                 {{-- <div class="links">
                     <a href="https://laravel.com/docs">Documentation</a>
